@@ -1,6 +1,8 @@
 import pygame
 
-#Button Class Which Handles Player Clicks
+# Button Class Which Handles Player Clicks
+
+
 class Button:
     def __init__(self, text, position, width, height, colour, hoverColour):
         self.text = text
@@ -15,8 +17,8 @@ class Button:
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.colour, self.rect)
-        textSurface = self.font.render(self.text, True, (255,255,255))
-        textRect = textSurface.get_rect(center = self.rect.center)
+        textSurface = self.font.render(self.text, True, (255, 255, 255))
+        textRect = textSurface.get_rect(center=self.rect.center)
         screen.blit(textSurface, textRect)
 
     def isClicked(self, event):
@@ -28,7 +30,7 @@ class Button:
                 return False
         else:
             return False
-        
+
     def isHovered(self):
         mousePos = pygame.mouse.get_pos()
         if self.rect.collidepoint(mousePos):
@@ -39,3 +41,10 @@ class Button:
     def update(self, screen):
         self.draw(screen)
         self.isHovered()
+
+
+class LevelButton(Button):
+    def __init__(self, text, position, width, height, colour, hoverColour, level):
+        Button.__init__(self, text, position, width,
+                        height, colour, hoverColour)
+        self.level = level
