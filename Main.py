@@ -1,6 +1,7 @@
 import pygame
 from Vehicles import Car, SportsCar, Truck, colourList
-from Buttons import Button, LevelButton
+from Buttons import *
+from TextBox import *
 from Utilities import scaleImage, LinkedList
 
 # Colour RGB Values
@@ -40,28 +41,6 @@ vehicleList.loop()
 # Initialises the player
 player = vehicleList.head.data
 
-# Creates the different Buttons used in the program
-playButton = Button("Play", (540-100, 360), 200, 75, lightOrange, orange)
-settingsButton = Button("Settings", (440, 450), 200, 75, grey, darkGrey)
-homeButton = Button("Home", (20, 10), 90, 50, grey, darkGrey)
-quitButton = Button("Quit", (20, 10), 90, 50, grey, darkGrey)
-changeColourButton = Button(
-    "Change Colour", (440, 600), 200, 75, grey, darkGrey)
-changeVehicleButton = Button(
-    "Change Vehicle", (440, 500), 200, 75, grey, darkGrey)
-level1Button = LevelButton("level 1", (75, 100),
-                           275, 100, lightOrange, orange, None)
-level2Button = LevelButton("level 2", (400, 100),
-                           275, 100, lightOrange, orange, None)
-level3Button = LevelButton("level 3", (725, 100),
-                           275, 100, lightOrange, orange, None)
-level4Button = LevelButton("level 4", (75, 300),
-                           275, 100, lightOrange, orange, None)
-level5Button = LevelButton("level 5", (400, 300),
-                           275, 100, lightOrange, orange, None)
-level6Button = LevelButton("level 6", (725, 300),
-                           275, 100, lightOrange, orange, None)
-
 # Keeps track of the current game state
 gameRunning = True
 mainMenuRunning = True
@@ -97,6 +76,7 @@ while gameRunning:
     while settingsRunning:
         clock.tick(fps)
         screen.fill(backgroundColour)
+        aboutTextBox.draw(screen)
         homeButton.update(screen)
         changeColourButton.update(screen)
         changeVehicleButton.update(screen)
@@ -139,3 +119,4 @@ while gameRunning:
                 levelMenuRunning = False
                 mainMenuRunning = True
         pygame.display.flip()
+
