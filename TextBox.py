@@ -1,8 +1,11 @@
 import pygame
+from Colours import *
 
 pygame.font.init()
 
 # Text Box class for placing a box of text on the screen
+
+
 class TextBox:
     def __init__(self, text, position, width, height, colour):
         self.text = text
@@ -20,12 +23,5 @@ class TextBox:
         screen.blit(textSurface, textRect)
 
 
-# Colour RGB Values
-white = (255, 255, 255)
-orange = (255, 169, 10)
-lightOrange = (220, 185, 120)
-grey = (153, 153, 153)
-darkGrey = (120, 120, 120)
-black = (38, 38, 38)
-
-aboutTextBox = TextBox("This game is about learning to drive. Each level will judge you and give a star rating. You can customise vehicle here", (540-250, 100), 500, 300, white)
+aboutTextBox = TextBox(
+    "This game is about learning to drive. Each level will judge you and give a star rating. You can customise vehicle here", (540-250, 50), 500, 100, white)
