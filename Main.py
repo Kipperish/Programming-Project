@@ -3,14 +3,7 @@ from Vehicles import Car, SportsCar, Truck, colourList
 from Buttons import *
 from TextBox import *
 from Utilities import scaleImage, LinkedList
-
-# Colour RGB Values
-white = (255, 255, 255)
-orange = (255, 169, 10)
-lightOrange = (220, 185, 120)
-grey = (153, 153, 153)
-darkGrey = (120, 120, 120)
-black = (38, 38, 38)
+from Colours import *
 
 # Initialises a screen
 backgroundColour = white
@@ -119,4 +112,3 @@ while gameRunning:
                 levelMenuRunning = False
                 mainMenuRunning = True
         pygame.display.flip()
-
