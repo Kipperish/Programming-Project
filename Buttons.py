@@ -1,6 +1,9 @@
 import pygame
+from Colours import *
 
 # Button Class Which Handles Player Clicks
+
+
 class Button:
     def __init__(self, text, position, width, height, colour, hoverColour):
         self.text = text
@@ -47,14 +50,6 @@ class LevelButton(Button):
                         height, colour, hoverColour)
         self.level = level
 
-
-# Colour RGB Values
-white = (255, 255, 255)
-orange = (255, 169, 10)
-lightOrange = (220, 185, 120)
-grey = (153, 153, 153)
-darkGrey = (120, 120, 120)
-black = (38, 38, 38)
 
 pygame.font.init()
 
