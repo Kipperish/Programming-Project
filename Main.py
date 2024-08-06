@@ -91,13 +91,21 @@ while gameRunning:
                 mainMenuRunning = True
             if changeColourButton.isClicked(event):
                 colourList.rotate()
-                player.originalImage = scaleImage(pygame.image.load(
-                    player.sprites[colourList.head.data]).convert_alpha(), 1)
+                if type(player) == Car:
+                    player.originalImage = scaleImage(pygame.image.load(
+                        player.sprites[colourList.head.data]).convert_alpha(), 1)
+                else:
+                    player.originalImage = scaleImage(pygame.image.load(
+                        player.sprites[colourList.head.data]).convert_alpha(), 0.6)
             if changeVehicleButton.isClicked(event):
                 vehicleList.rotate()
                 player = vehicleList.head.data
-                player.originalImage = scaleImage(pygame.image.load(
-                    player.sprites[colourList.head.data]).convert_alpha(), 1)
+                if type(player) == Car:
+                    player.originalImage = scaleImage(pygame.image.load(
+                        player.sprites[colourList.head.data]).convert_alpha(), 1)
+                else:
+                    player.originalImage = scaleImage(pygame.image.load(
+                        player.sprites[colourList.head.data]).convert_alpha(), 0.6)
         pygame.display.flip()
 
     # Creates loop for level select screen
