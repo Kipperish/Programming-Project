@@ -80,6 +80,7 @@ while gameRunning:
         homeButton.update(screen)
         changeColourButton.update(screen)
         changeVehicleButton.update(screen)
+        player.angle = 0
         player.rect.center = (700, 590)
         screen.blit(player.originalImage, player.rect)
         for event in pygame.event.get():
@@ -132,6 +133,8 @@ while gameRunning:
             if level1Button.isClicked(event):
                 levelMenuRunning = False
                 level1Running = True
+                player.angle = 90
+                player.rect.center = (50, 360)
 
             if level2Button.isClicked(event):
                 levelMenuRunning = False
@@ -160,6 +163,8 @@ while gameRunning:
         screen.fill(green)
         homeButton.update(screen)
         straightRoad.draw(screen)
+        player.update()
+        screen.blit(player.image, player.rect)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -168,7 +173,7 @@ while gameRunning:
             if homeButton.isClicked(event):
                 level1Running = False
                 levelMenuRunning = True
-        pygame.display.flip()#
+        pygame.display.flip()
     
     while level2Running:
         clock.tick(fps)
