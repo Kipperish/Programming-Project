@@ -121,7 +121,7 @@ class SportsCar(Vehicle):
         Vehicle.__init__(self)
         global colourList
         self.sprites = {"RED":"Images\Sports Cars\RedRacecar.png", "BLUE":"Images\Sports Cars\BlueRacecar.png", "GREEN":"Images/Sports Cars/GreenRacecar.png", "PURPLE":"Images\Sports Cars\PurpleRacecar.png"}
-        self.originalImage = scaleImage(pygame.image.load(self.sprites[colourList.head.data]).convert_alpha(), 1)
+        self.originalImage = scaleImage(pygame.image.load(self.sprites[colourList.head.data]).convert_alpha(), 0.6)
         self.image = self.originalImage
         self.rect = self.image.get_rect(center=(540,360))
         self.lives = 0
@@ -140,7 +140,7 @@ class Truck(Vehicle):
         Vehicle.__init__(self)
         global colourList
         self.sprites = {"RED":"Images\Trucks\Red Truck.png", "BLUE":"Images\Trucks\Blue Truck.png", "GREEN":"Images\Trucks\Green Truck.png", "PURPLE":"Images\Trucks\Purple Truck.png"}
-        self.originalImage = scaleImage(pygame.image.load(self.sprites[colourList.head.data]).convert_alpha(), 1)
+        self.originalImage = scaleImage(pygame.image.load(self.sprites[colourList.head.data]).convert_alpha(), 0.6)
         self.image = self.originalImage
         self.rect = self.image.get_rect(center=(540,360))
         self.lives = 0
