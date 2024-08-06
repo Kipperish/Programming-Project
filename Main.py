@@ -4,6 +4,7 @@ from Buttons import *
 from TextBox import *
 from Utilities import scaleImage, LinkedList
 from Colours import *
+from LevelParts import *
 
 # Initialises a screen
 backgroundColour = white
@@ -39,6 +40,12 @@ gameRunning = True
 mainMenuRunning = True
 settingsRunning = False
 levelMenuRunning = False
+level1Running = False
+level2Running = False
+level3Running = False
+level4Running = False
+level5Running = False
+level6Running = False
 
 # Main Game Loop
 while gameRunning:
@@ -93,6 +100,7 @@ while gameRunning:
                     player.sprites[colourList.head.data]).convert_alpha(), 1)
         pygame.display.flip()
 
+    # Creates loop for level select screen
     while levelMenuRunning:
         clock.tick(fps)
         screen.fill(backgroundColour)
@@ -108,7 +116,118 @@ while gameRunning:
             if event.type == pygame.QUIT:
                 levelMenuRunning = False
                 gameRunning = False
+
             if homeButton.isClicked(event):
                 levelMenuRunning = False
                 mainMenuRunning = True
+
+            if level1Button.isClicked(event):
+                levelMenuRunning = False
+                level1Running = True
+
+            if level2Button.isClicked(event):
+                levelMenuRunning = False
+                level2Running = True
+
+            if level3Button.isClicked(event):
+                levelMenuRunning = False
+                level3Running = True
+
+            if level4Button.isClicked(event):
+                levelMenuRunning = False
+                level4Running = True
+
+            if level5Button.isClicked(event):
+                levelMenuRunning = False
+                level5Running = True
+
+            if level6Button.isClicked(event):
+                levelMenuRunning = False
+                level6Running = True
+
+        pygame.display.flip()
+
+    while level1Running:
+        clock.tick(fps)
+        screen.fill(green)
+        homeButton.update(screen)
+        straightRoad.draw(screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                level1Running = False
+                gameRunning = False
+            if homeButton.isClicked(event):
+                level1Running = False
+                levelMenuRunning = True
+        pygame.display.flip()#
+    
+    while level2Running:
+        clock.tick(fps)
+        screen.fill(green)
+        homeButton.update(screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                level2Running = False
+                gameRunning = False
+            if homeButton.isClicked(event):
+                level2Running = False
+                levelMenuRunning = True
+        pygame.display.flip()
+    
+    while level3Running:
+        clock.tick(fps)
+        screen.fill(green)
+        homeButton.update(screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                level3Running = False
+                gameRunning = False
+            if homeButton.isClicked(event):
+                level3Running = False
+                levelMenuRunning = True
+        pygame.display.flip()
+    
+    while level4Running:
+        clock.tick(fps)
+        screen.fill(green)
+        homeButton.update(screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                level4Running = False
+                gameRunning = False
+            if homeButton.isClicked(event):
+                level4Running = False
+                levelMenuRunning = True
+        pygame.display.flip()
+    
+    while level5Running:
+        clock.tick(fps)
+        screen.fill(green)
+        homeButton.update(screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                level5Running = False
+                gameRunning = False
+            if homeButton.isClicked(event):
+                level5Running = False
+                levelMenuRunning = True
+        pygame.display.flip()
+    
+    while level6Running:
+        clock.tick(fps)
+        screen.fill(green)
+        homeButton.update(screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                level6Running = False
+                gameRunning = False
+            if homeButton.isClicked(event):
+                level6Running = False
+                levelMenuRunning = True
         pygame.display.flip()
