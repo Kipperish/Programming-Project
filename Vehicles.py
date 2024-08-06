@@ -134,6 +134,16 @@ class SportsCar(Vehicle):
         self.velocity = 0
         self.moving = False
 
+    def update(self):
+        global colourList
+        self.originalImage = scaleImage(pygame.image.load(self.sprites[colourList.head.data]).convert_alpha(), 0.6)
+        self.rotate()
+        self.accelerate()
+        self.move()
+        self.drag = 10*(6 * math.pi * 1.81e-5 * 5 * self.velocity)
+        self.velocity -= self.drag
+        self.rotationSpeed = self.velocity/2
+
 #Creates a Truck class that inherits from Vehicle
 class Truck(Vehicle):
     def __init__(self):
@@ -152,3 +162,13 @@ class Truck(Vehicle):
         self.rotationSpeed = self.velocity/2
         self.velocity = 0
         self.moving = False
+
+    def update(self):
+        global colourList
+        self.originalImage = scaleImage(pygame.image.load(self.sprites[colourList.head.data]).convert_alpha(), 0.6)
+        self.rotate()
+        self.accelerate()
+        self.move()
+        self.drag = 10*(6 * math.pi * 1.81e-5 * 5 * self.velocity)
+        self.velocity -= self.drag
+        self.rotationSpeed = self.velocity/2
