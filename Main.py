@@ -2,9 +2,11 @@ import pygame
 from Vehicles import Car, SportsCar, Truck, colourList
 from Buttons import *
 from TextBox import *
-from Utilities import scaleImage, LinkedList
+from Utilities import *
 from Colours import *
 from LevelParts import *
+from Stars import *
+from Lives import *
 
 # Initialises a screen
 backgroundColour = white
@@ -34,6 +36,15 @@ vehicleList.loop()
 
 # Initialises the player
 player = vehicleList.head.data
+
+# Creates a list to store stars that the player collects
+stars = []
+
+# Tracks the players score in a level
+score = 0
+
+# Instantiates life bar to track player lives
+lifeBar = Lives()
 
 # Keeps track of the current game state
 gameRunning = True
@@ -133,28 +144,44 @@ while gameRunning:
             if level1Button.isClicked(event):
                 levelMenuRunning = False
                 level1Running = True
+                player.velocity = 0
                 player.angle = 90
                 player.rect.center = (50, 360)
+                player.setLives(3)
+                stars = []
+                stars.append(Star((540, 360)))
+                stars.append(Star((240, 360)))
+                stars.append(Star((840, 360)))
 
             if level2Button.isClicked(event):
                 levelMenuRunning = False
                 level2Running = True
+                player.velocity = 0
+                player.setLives(3)
 
             if level3Button.isClicked(event):
                 levelMenuRunning = False
                 level3Running = True
+                player.velocity = 0
+                player.setLives(3)
 
             if level4Button.isClicked(event):
                 levelMenuRunning = False
                 level4Running = True
+                player.velocity = 0
+                player.setLives(3)
 
             if level5Button.isClicked(event):
                 levelMenuRunning = False
                 level5Running = True
+                player.velocity = 0
+                player.setLives(3)
 
             if level6Button.isClicked(event):
                 levelMenuRunning = False
                 level6Running = True
+                player.velocity = 0
+                player.setLives(3)
 
         pygame.display.flip()
 
@@ -165,6 +192,9 @@ while gameRunning:
         straightRoad.draw(screen)
         player.update()
         screen.blit(player.image, player.rect)
+        for star in stars:
+            screen.blit(star.image, star.rect)
+        screen.blit(lifeBar.currentImage, lifeBar.rect)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -173,6 +203,14 @@ while gameRunning:
             if homeButton.isClicked(event):
                 level1Running = False
                 levelMenuRunning = True
+
+        for star in stars:
+            if pygame.Rect.colliderect(player.rect, star.rect):
+                stars.remove(star)
+                score += 1
+
+        lifeBar.currentImage = lifeBar.images[player.lives]
+        
         pygame.display.flip()
     
     while level2Running:
